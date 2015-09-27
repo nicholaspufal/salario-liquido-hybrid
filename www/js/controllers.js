@@ -3,17 +3,15 @@ angular.module('app.controllers', [])
 .controller('CalculatorCtrl', function($scope, $http, $interpolate, $ionicScrollDelegate) {
   resetScope();
 
+  window.form = $scope.form;
+
   function resetScope () {
-    $scope.form = {
-      dependents: 0
-    };
+    $scope.form = {};
     $scope.result = null;
   }
 
-  function filterInput(input) {
-    var input = (input || 0).toString();
-    var input = input.replace(/,/, '.').replace(/[^0-9.]/g, '');
-    return input;
+  $scope.scrollDown = function scrollDown () {
+    $ionicScrollDelegate.scrollBy(0, 30);
   };
 
   $scope.newSubmission = function newSubmission () {
@@ -22,14 +20,16 @@ angular.module('app.controllers', [])
   };
 
   $scope.calculate = function calculate () {
+    console.log($scope.form.dependents);
     var requestData = {
-      grossSalary: filterInput($scope.form.grossSalary),
+      grossSalary: $scope.form.grossSalary,
       dependents: $scope.form.dependents
     };
 
     var endpoint = $interpolate('http://104.131.75.80:3000/calculate_net_salary?grossSalary={{grossSalary}}&dependents={{dependents}}');
 
     $http.get(endpoint(requestData)).then(function(result) {
+      $ionicScrollDelegate.scrollTop();
       $scope.result = result.data;
     });
   };

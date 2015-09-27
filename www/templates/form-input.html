@@ -1,18 +1,26 @@
-<form name="netSalaryForm" ng-submit="calculate()" >
+<form name="netSalaryForm" ng-submit="netSalaryForm.$valid && calculate()" novalidate>
   <label class="item item-input item-stacked-label">
     <span class="input-label">Informe seu salário bruto:</span>
-    <input type="number" step="0.01"
+    <div class="errors">
+      <small ng-show="netSalaryForm.grossSalary.$error.required">Campo obrigatório</small>
+      <small ng-show="netSalaryForm.grossSalary.$error.number">Informe um número válido</small>
+    </div>
+    <input type="number" ng-pattern="/[0-9,.]+/"
                          name="grossSalary"
                          ng-model="form.grossSalary"
-                         placeholder="Exemplo: 4550.68" required>
+                         placeholder="Exemplo: 4550.68"
+                         required>
   </label>
 
   <label class="item item-input item-stacked-label">
     <span class="input-label">Número de dependentes:</span>
-    <div class="range range-positive">
-      <span>{{ form.dependents }}</span>
-      <input type="range" name="dependents" ng-model="form.dependents" min="0" max="10">
+    <div class="errors" ng-show="netSalaryForm.$dirty">
+      <small ng-show="netSalaryForm.dependents.$error.number">Informe um número válido</small>
     </div>
+    <input type="number" name="dependents"
+                         ng-focus="scrollDown()"
+                         placeholder="Exemplo: 1"
+                         ng-model="form.dependents">
   </label>
 
   <div class="padding">
