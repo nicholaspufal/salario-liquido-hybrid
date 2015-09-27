@@ -1,0 +1,39 @@
+<div class="list">
+  <div class="results">
+    <h3 class="result-title">Seu salário líquido:</h1>
+    <h4 class="result-amount">{{ result.netSalary | currency: "R$" }}</h2>
+  </div>
+
+  <div class="card">
+    <div class="item item-divider">
+      Descontos
+    </div>
+    <div class="item item-text-wrap">
+      <h2>INSS</h2>
+      <p>{{ result.INSS | currency: "R$" }}</p>
+    </div>
+    <div class="item item-text-wrap">
+      <h2>IRRF</h2>
+      <p>{{ result.IRRF | currency: "R$" }}</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="item item-divider">
+      Informações fornecidas
+    </div>
+    <div class="item item-text-wrap">
+      <h2>Salário bruto</h2>
+      <p>{{ form.grossSalary | currency: "R$" }}</p>
+    </div>
+    <div class="item item-text-wrap">
+      <h2>Número de dependentes</h2>
+      <p>{{ form.dependents }}</p>
+    </div>
+  </div>
+
+
+  <div class="padding">
+    <button class="button button-block button-positive" ng-click="clear()">Calcular usando outro valor</button>
+  </div>
+</div>

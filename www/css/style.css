@@ -1,1 +1,21 @@
 /* Empty. Add your own CSS if you like */
+
+.results {
+  margin: 20px auto;
+}
+
+p.message {
+  text-align: center;
+  color: rgba(132,132,132,1);
+}
+
+.result-title, .result-amount {
+  text-align: center;
+}
+
+
+/* Override ionic defaults */
+
+.range {
+  padding: 0px;
+}

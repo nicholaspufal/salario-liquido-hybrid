@@ -1,20 +1,6 @@
-<ion-view view-title="Calcular salário líquido">
+<ion-view view-title="Calcular salário líquido" ng-controller="CalculatorCtrl">
   <ion-content class="padding">
-    <form>
-      <div class="list">
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Salário bruto</span>
-          <input type="text" placeholder="Informe seu salário bruto (R$)">
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Número de dependentes</span>
-          <input type="text" placeholder="Número de dependentes">
-        </label>
-      </div>
-      <div class="padding">
-        <button class="button button-block button-positive">Calcular</button>
-        <button type="reset" class="button button-block button-stable">Limpar campos</button>
-      </div>
-    </form>
+    <ng-include ng-hide="result" src="'templates/form-input.html'"></ng-include>
+    <ng-include ng-show="result" src="'templates/form-result.html'"></ng-include>
   </ion-content>
 </ion-view>

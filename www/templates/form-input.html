@@ -1,0 +1,23 @@
+<form name="netSalaryForm" ng-submit="calculate()">
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Salário bruto</span>
+    <input type="tel" name="grossSalary"
+                      ng-model="form.grossSalary"
+                      placeholder="Informe seu salário bruto (R$)">
+  </label>
+
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Número de dependentes</span>
+    <div class="range range-positive">
+      <span>{{ form.dependents }}</span>
+      <input type="range" name="dependents" ng-model="form.dependents" min="0" max="10">
+    </div>
+  </label>
+
+  <div class="padding">
+    <button class="button button-block button-positive">Calcular</button>
+    <button class="button button-block button-stable" ng-click="clear()">Limpar campos</button>
+  </div>
+</form>
+
+<p class="message">O cálculo será feito de acordo com os valores fornecidos pelo governo para o ano de 2015</p>
