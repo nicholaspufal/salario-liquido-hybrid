@@ -1,13 +1,18 @@
-src_folder := www
+source_folder := www
+source_js_folder := $(source_folder)/js
 
 .PHONY: serve
 serve: build
 	@ionic serve --nobrowser --labs
 
 .PHONY: build
-build:
+build: lint
 	@echo 'Executing browserify...'
-	@browserify $(src_folder)/js/app.js -o $(src_folder)/bundle.js
+	@browserify $(source_js_folder)/app.js -o $(source_folder)/bundle.js
+
+.PHONY: lint
+lint:
+	@jshint $(source_js_folder) --reporter 'node_modules/jshint-stylish'
 
 .PHONY: run.ios.device
 run.ios.device: build

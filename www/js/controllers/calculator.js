@@ -1,10 +1,10 @@
 function CalculatorController($scope, $http, $interpolate, $ionicScrollDelegate) {
-  resetScope();
-
   function resetScope () {
     $scope.form = {};
     $scope.result = null;
   }
+
+  resetScope();
 
   $scope.scrollDown = function scrollDown () {
     $ionicScrollDelegate.scrollBy(0, 30);
@@ -22,7 +22,9 @@ function CalculatorController($scope, $http, $interpolate, $ionicScrollDelegate)
       dependents: $scope.form.dependents
     };
 
-    var endpoint = $interpolate('http://104.131.75.80:3000/calculate_net_salary?grossSalary={{grossSalary}}&dependents={{dependents}}');
+    var serviceUrl = "http://104.131.75.80:3000";
+    var endpointTemplate = serviceUrl + "/calculate_net_salary?grossSalary={{grossSalary}}&dependents={{dependents}}";
+    var endpoint = $interpolate(endpointTemplate);
 
     $http.get(endpoint(requestData)).then(function(result) {
       $ionicScrollDelegate.scrollTop();

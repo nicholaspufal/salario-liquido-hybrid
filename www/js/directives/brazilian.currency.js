@@ -8,6 +8,6 @@ function BrazilianCurrencyDirective() {
       });
     }
   };
-};
+}
 
 module.exports = BrazilianCurrencyDirective;
