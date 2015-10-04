@@ -1,9 +1,5 @@
-angular.module('app.controllers', [])
-
-.controller('CalculatorCtrl', function($scope, $http, $interpolate, $ionicScrollDelegate) {
+function CalculatorController($scope, $http, $interpolate, $ionicScrollDelegate) {
   resetScope();
-
-  window.form = $scope.form;
 
   function resetScope () {
     $scope.form = {};
@@ -33,7 +29,6 @@ angular.module('app.controllers', [])
       $scope.result = result.data;
     });
   };
-})
+}
 
-.controller('AboutCtrl', function($scope) {
-});
+module.exports = CalculatorController;

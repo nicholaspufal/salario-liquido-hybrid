@@ -1,4 +1,7 @@
-angular.module('app', ['ionic', 'app.controllers', 'app.services'])
+require('./controllers');
+require('./directives');
+
+angular.module('app', ['ionic', 'app.controllers', 'app.directives'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

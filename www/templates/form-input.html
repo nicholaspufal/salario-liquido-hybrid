@@ -3,13 +3,12 @@
     <span class="input-label">Informe seu salário bruto:</span>
     <div class="errors">
       <small ng-show="netSalaryForm.grossSalary.$error.required">Campo obrigatório</small>
-      <small ng-show="netSalaryForm.grossSalary.$error.number">Informe um número válido</small>
     </div>
-    <input type="number" ng-pattern="/[0-9,.]+/"
-                         name="grossSalary"
-                         ng-model="form.grossSalary"
-                         placeholder="Exemplo: 4550.68"
-                         required>
+    <input type="text" name="grossSalary"
+                       ng-model="form.grossSalary"
+                       placeholder="Exemplo: 4550.68"
+                       brazilian-currency
+                       required>
   </label>
 
   <label class="item item-input item-stacked-label">
