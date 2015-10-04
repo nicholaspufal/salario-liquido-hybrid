@@ -1,5 +1,5 @@
-var BrazilianCurrencyDirective = require('./brazilian.currency');
+var currencyDirective = require('./currency');
 
 angular.module('app.directives', [])
-.directive('brazilianCurrency', BrazilianCurrencyDirective);
+.directive('currency', currencyDirective);
 

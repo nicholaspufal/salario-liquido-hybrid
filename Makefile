@@ -1,6 +1,8 @@
 source_folder := www
 source_js_folder := $(source_folder)/js
 
+# Develop the app
+
 .PHONY: serve
 serve: build
 	@ionic serve --nobrowser --labs
@@ -13,6 +15,16 @@ build:
 .PHONY: lint
 lint:
 	@jshint $(source_js_folder) --reporter 'node_modules/jshint-stylish'
+
+.PHONY: test
+test: lint
+	@mocha
+
+.PHONY: test
+test.watch:
+	@mocha --watch
+
+# Run the app
 
 .PHONY: run.ios.device
 run.ios.device: lint build
